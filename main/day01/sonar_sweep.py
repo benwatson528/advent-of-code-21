@@ -1,0 +1,15 @@
+def solve_pairs(x) -> int:
+    increases = 0
+    for a, b in zip(x, x[1:]):
+        if b > a:
+            increases += 1
+
+    return increases
+
+
+def solve_sliding(x) -> int:
+    increases = 0
+    for a, b, c, d in zip(x, x[1:], x[2:], x[3:]):
+        if b + c + d > a + b + c:
+            increases += 1
+    return increases
