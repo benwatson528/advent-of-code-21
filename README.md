@@ -2,7 +2,6 @@
 
 https://adventofcode.com/2021 - in Python.
 
-
 ## Running information
 
 Each day, run `day_setup.py` to automatically create:
@@ -11,3 +10,9 @@ Each day, run `day_setup.py` to automatically create:
 2. `tests/dayx/test_<puzzle_name>.py`
 3. `tests/dayx/data/input.txt`
 4. `tests/dayx/data/test_input.txt`
+
+To run all tests from the project root dir:
+
+```bash
+python -m pytest tests
+```
