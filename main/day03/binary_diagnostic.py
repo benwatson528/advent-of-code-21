@@ -11,12 +11,9 @@ def build_binary(l, op):
 
 
 def solve_life_support(l) -> int:
-    oxygen_generator = solve_life_support_rec(l, operator.ge, 0)
-    co2_scrubber = solve_life_support_rec(l, operator.lt, 0)
-    return int(oxygen_generator, 2) * int(co2_scrubber, 2)
+    return int(solve_life_support_rec(l, operator.ge, 0), 2) * int(solve_life_support_rec(l, operator.lt, 0), 2)
 
 
 def solve_life_support_rec(l, op, i):
-    comparison = build_binary(l, op)[i]
-    filtered = list(filter(lambda x: (x[i] == comparison), l))
+    filtered = list(filter(lambda x: (x[i] == build_binary(l, op)[i]), l))
     return filtered[0] if len(filtered) == 1 else solve_life_support_rec(filtered, op, i + 1)
