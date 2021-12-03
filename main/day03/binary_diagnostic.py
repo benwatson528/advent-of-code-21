@@ -3,15 +3,9 @@ from collections import Counter
 
 
 def solve(l) -> int:
-    gamma = build_binary(l, operator.gt)
-    epsilon = build_binary(l, operator.lt)
-
-    return int(gamma, 2) * int(epsilon, 2)
+    return build_binary(l, operator.gt) * build_binary(l, operator.lt)
 
 
 def build_binary(l, relate):
-    binary = ""
-    for col in list(map(list, zip(*l))):
-        counter = Counter(col)
-        binary += str(1) if relate(counter['1'], counter['0']) else str(0)
-    return binary
+    return int(
+        ''.join(str(1) if relate(Counter(x)['1'], Counter(x)['0']) else str(0) for x in list(map(list, zip(*l)))), 2)
