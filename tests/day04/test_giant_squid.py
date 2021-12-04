@@ -4,12 +4,20 @@ from pathlib import Path
 from main.day04.giant_squid import solve_bingo
 
 
-def test_simple():
-    assert solve_bingo(read_input("data/test_input.txt")) == 4512
+def test_winner_simple():
+    assert solve_bingo(read_input("data/test_input.txt"), True) == 4512
 
 
-def test_real():
-    assert solve_bingo(read_input("data/input.txt")) == 63552
+def test_winner_real():
+    assert solve_bingo(read_input("data/input.txt"), True) == 63552
+
+
+def test_loser_simple():
+    assert solve_bingo(read_input("data/test_input.txt"), False) == 1924
+
+
+def test_loser_real():
+    assert solve_bingo(read_input("data/input.txt"), False) == 9020
 
 
 def read_input(file_name):
