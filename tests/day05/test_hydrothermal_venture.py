@@ -5,12 +5,20 @@ from day05.Line import Line
 from main.day05.hydrothermal_venture import solve
 
 
-def test_simple():
-    assert solve(read_input("data/test_input.txt")) == 5
+def test_straight_simple():
+    assert solve(read_input("data/test_input.txt"), False) == 5
 
 
-def test_real():
-    assert solve(read_input("data/input.txt")) == 6687
+def test_straight_real():
+    assert solve(read_input("data/input.txt"), False) == 6687
+
+
+def test_diagonal_simple():
+    assert solve(read_input("data/test_input.txt"), True) == 12
+
+
+def test_diagonal_real():
+    assert solve(read_input("data/input.txt"), True) == 19851
 
 
 def read_input(file_name):
