@@ -1,17 +1,18 @@
 def solve(fish, num_turns) -> int:
-    return len( progress_fish_rec(fish, 0, num_turns))
+    states = [0] * 9
+    for f in fish:
+        states[f] += 1
+    return sum(progress_fish_rec(states, 0, num_turns))
 
 
-def progress_fish_rec(fish, current, end):
-    if current == end:
-        return fish
+def progress_fish_rec(states, current_turn, num_turns):
+    if current_turn == num_turns:
+        return states
     else:
-        new_fish = []
-        for f in fish:
-            if f - 1 == -1:
-                new_fish.append(6)
-                new_fish.append(8)
-            else:
-                new_fish.append(f - 1)
-
-        return progress_fish_rec(new_fish, current + 1, end)
+        new_states = [0] * 9
+        for i in range(9):
+            prev = (i + 1) % 9
+            new_states[i] = states[prev]
+            if i == 6:
+                new_states[i] += states[0]
+        return progress_fish_rec(new_states, current_turn + 1, num_turns)
