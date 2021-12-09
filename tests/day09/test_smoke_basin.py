@@ -1,15 +1,23 @@
 import os
 from pathlib import Path
 
-from main.day09.smoke_basin import solve
+from main.day09.smoke_basin import solve_low_points, solve_basins
 
 
-def test_simple():
-    assert solve(read_input("data/test_input.txt")) == 504
+def test_low_points_simple():
+    assert solve_low_points(read_input("data/test_input.txt")) == 15
 
 
-def test_real():
-    assert solve(read_input("data/input.txt")) == 3
+def test_low_points_real():
+    assert solve_low_points(read_input("data/input.txt")) == 504
+
+
+def test_basins_simple():
+    assert solve_basins(read_input("data/test_input.txt")) == 1134
+
+
+def test_basins_real():
+    assert solve_basins(read_input("data/input.txt")) == 1558722
 
 
 def read_input(file_name):
