@@ -30,8 +30,7 @@ def fix_line(line):
     score = 0
     while len(stack) != 0:
         c = stack.pop()
-        score *= 5
-        score += scoring_table[c]
+        score = (score * 5) + scoring_table[c]
     return score
 
 
