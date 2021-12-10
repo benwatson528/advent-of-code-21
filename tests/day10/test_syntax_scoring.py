@@ -1,15 +1,23 @@
 import os
 from pathlib import Path
 
-from main.day10.syntax_scoring import solve
+from main.day10.syntax_scoring import solve_invalid, solve_corrupted
 
 
-def test_simple():
-    assert solve(read_input("data/test_input.txt")) == 26397
+def test_invalid_simple():
+    assert solve_invalid(read_input("data/test_input.txt")) == 26397
 
 
-def test_real():
-    assert solve(read_input("data/input.txt")) == 3
+def test_invalid_real():
+    assert solve_invalid(read_input("data/input.txt")) == 415953
+
+
+def test_corrupted_simple():
+    assert solve_corrupted(read_input("data/test_input.txt")) == 288957
+
+
+def test_corrupted_real():
+    assert solve_corrupted(read_input("data/input.txt")) == 2292863731
 
 
 def read_input(file_name):
