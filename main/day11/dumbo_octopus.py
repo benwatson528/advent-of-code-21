@@ -15,14 +15,8 @@ def bloom(grid, y, x, flashed):
     if y < 0 or x < 0 or y >= len(grid) or x >= len(grid[y]):
         return flashed
     for new_y, new_x in (
-            (y + 1, x),
-            (y - 1, x),
-            (y, x + 1),
-            (y, x - 1),
-            (y + 1, x + 1),
-            (y + 1, x - 1),
-            (y - 1, x + 1),
-            (y - 1, x - 1)):
+            (y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1),
+            (y + 1, x + 1), (y + 1, x - 1), (y - 1, x + 1), (y - 1, x - 1)):
         flashed = evolve(grid, new_y, new_x, flashed)
     return flashed
 
