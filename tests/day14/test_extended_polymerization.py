@@ -17,7 +17,7 @@ def test_forty_turns_simple():
 
 
 def test_forty_turns_real():
-    assert solve(read_input("data/input.txt"), 40) == 2584
+    assert solve(read_input("data/input.txt"), 40) == 3816397135460
 
 
 def read_input(file_name):
