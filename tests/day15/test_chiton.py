@@ -9,7 +9,7 @@ def test_simple():
 
 
 def test_real():
-    assert solve(read_input("data/input.txt")) == 389  # not 384, 389
+    assert solve(read_input("data/input.txt")) == 393
 
 
 def read_input(file_name):

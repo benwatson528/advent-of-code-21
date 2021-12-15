@@ -16,16 +16,11 @@ def calculate_distances(graph):
     while len(pq) > 0:
         current_distance, current_vertex = heapq.heappop(pq)
 
-        # Nodes can get added to the priority queue multiple times. We only
-        # process a vertex the first time we remove it from the priority queue.
         if current_distance > distances[current_vertex]:
             continue
 
         for neighbor, weight in graph[current_vertex].items():
             distance = current_distance + weight
-
-            # Only consider this new path if it's better than any path we've
-            # already found.
             if distance < distances[neighbor]:
                 distances[neighbor] = distance
                 heapq.heappush(pq, (distance, neighbor))
@@ -45,6 +40,6 @@ def build_graph(grid):
         for j in range(len(grid[i])):
             for neighbour in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
                 if 0 <= neighbour[0] < len(grid) and 0 <= neighbour[1] < len(grid[i]):
-                    distances[(i, j)][neighbour] = grid[i][j]
+                    distances[(i, j)][neighbour] = grid[neighbour[0]][neighbour[1]]
                     distances[neighbour][(i, j)] = grid[i][j]
     return nodes, distances
