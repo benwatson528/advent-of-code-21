@@ -6,7 +6,7 @@ def solve(x, num_steps) -> int:
     counts = Counter(zip(template, template[1:]))
     for _ in range(num_steps):
         counts = take_turn(counts, rules)
-    occurrences = find_occurrences(counts)
+    occurrences = find_occurrences(counts, template[0])
     return max(occurrences.values()) - min(occurrences.values())
 
 
@@ -21,8 +21,8 @@ def take_turn(counts, rules):
     return updated_counts
 
 
-def find_occurrences(counts):
-    single_keys = {}
+def find_occurrences(counts, first_letter):
+    single_keys = {first_letter: 1}
     for pair, occurrences in counts.items():
         single_keys[pair[1]] = single_keys.get(pair[1], 0) + occurrences
     return single_keys
