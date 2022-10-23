@@ -4,7 +4,7 @@ https://adventofcode.com/2021 - in Python.
 
 ## Running information
 
-Each day, run `day_setup.py` to automatically create:
+Each day, run `setup/day_setup.py` to automatically create:
 
 1. `main/dayx/<puzzle_name>.py`
 2. `tests/dayx/test_<puzzle_name>.py`
