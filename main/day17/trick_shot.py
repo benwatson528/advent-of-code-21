@@ -3,19 +3,22 @@ import itertools
 from day17.Bounds import Bounds
 
 
-def solve(bounds: Bounds) -> int:
+def solve(bounds: Bounds) -> (int, int):
     max_y = float('-inf')
-    for starting_v in itertools.product(range(100), range(0, 1000)):
+    successful_velocities = set()
+    for starting_v in itertools.product(range(161), range(-142, 150)):
         y = move((0, 0), starting_v, bounds, float('-inf'), 0, False)
-        max_y = y if y is not None and y > max_y else max_y
-    return max_y
+        if y is not None:
+            max_y = max(y, max_y)
+            successful_velocities.add(starting_v)
+    return max_y, len(successful_velocities)
 
 
 def move(current, velocity, bounds, overall_max_y, i, hit_target):
     if is_in_target_area(current, bounds):
         return overall_max_y
     else:
-        if i == 500:
+        if current[0] > bounds.max_x or i == 400:
             return None
         new_position = (current[0] + velocity[0], current[1] + velocity[1])
         new_velocity = update_velocity(velocity)
