@@ -1,3 +1,4 @@
+import itertools
 import json
 import math
 import re
@@ -14,6 +15,14 @@ def solve(fishes) -> int:
             transformed = json.loads(transform(transformed))
         current = transformed
     return calculate_magnitude(current)
+
+
+def solve_max_magnitude(fishes) -> int:
+    max_mag = 0
+    for com in itertools.combinations(fishes, 2):
+        max_mag = max(max_mag, solve(com))
+        max_mag = max(max_mag, solve([com[1], com[0]]))
+    return max_mag
 
 
 def transform(fish):
