@@ -4,14 +4,24 @@ from pathlib import Path
 from main.day20.trench_map import solve
 
 
-def test_simple():
+def test_2_steps_simple():
     algorithm, input_image = read_input("data/test_input.txt")
     assert solve(algorithm, input_image, 2) == 35
 
 
-def test_real():
+def test_2_steps_real():
     algorithm, input_image = read_input("data/input.txt")
-    assert solve(algorithm, input_image, 2) == 5504 # 5504 too high
+    assert solve(algorithm, input_image, 2) == 5395
+
+
+def test_50_steps_simple():
+    algorithm, input_image = read_input("data/test_input.txt")
+    assert solve(algorithm, input_image, 50) == 3351
+
+
+def test_50_steps_real():
+    algorithm, input_image = read_input("data/input.txt")
+    assert solve(algorithm, input_image, 50) == 5395
 
 
 def read_input(file_name):
